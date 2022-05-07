@@ -62,9 +62,9 @@
         <div v-if="isOpen">
           <p>Hola, {{ username }}</p>
           <div class="list">
-            <div v-for="i in posts" class="item">
-              <div class="title">{{ i.title }}</div>
-              <p>{{ i.description }}</p>
+            <div v-for="(item, i) in posts" :key="i" class="item">
+              <div class="title">{{ item.title }}</div>
+              <p>{{ item.description }}</p>
             </div>
           </div>
         </div>
