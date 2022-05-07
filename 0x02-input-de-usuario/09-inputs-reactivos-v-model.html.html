@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script src="https://unpkg.com/vue@next"></script>
+  <div id="app">{{ text }}</div>
+  <script>
+    const vm = Vue.createApp({
+      data() {
+        return {
+          text: "Hola Vue!"
+        }
+      },
+      methods: {
+        whenUserInput(e) {
+          // console.log(e.target.value)
+          this.text = e.target.value
+        }
+      },
+      template: `
+        <p>{{ text }}</p>
+        <input
+          type="text"
+          v-model="text"
+          />
+      `
+      // v-model hace lo que en el archivo anterio haciamos con v-on y v-bind
+      // v-model directive to create two-way data bindings on form input
+      // https://v2.vuejs.org/v2/guide/forms.html
+
+    }).mount("#app");
+    console.log(vm)
+  </script>
+  
+</body>
+</html>
