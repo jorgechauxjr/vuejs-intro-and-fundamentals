@@ -7,16 +7,20 @@
   <title>Document</title>
 </head>
 <body>
+
+ <!-- ======ATRIBUTOS REACTIVOS====== -->
+ <!-- directiva v-bind -->
+
   <script src="https://unpkg.com/vue@next"></script>
   <div id="app"></div>
   <script>
     const vm = Vue.createApp({
       data() {
         return {
-          text: "<h1>Hello Vue!</h1>"
+          myimg: "https://cdn.pixabay.com/photo/2017/12/15/13/51/polynesia-3021072_960_720.jpg"
         };
       },
-      template: `<div v-html="text"></div>`
+      template: `<img v-bind:src="myimg" v-bind:alt="myimg"/>`
     }).mount("#app");
     console.log(vm)
   </script>
