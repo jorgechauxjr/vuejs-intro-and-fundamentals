@@ -15,19 +15,14 @@
         return {
           text: "Puerta Cerrada",
           isOpen: false,
-          myStyles: {
-            backgroundColor: "#eca1a6"
-          }
         }
       },
       watch: {
         isOpen(value) {
          if (value) {
            this.text = "Puerta ABIERTA";
-           this.myStyles.backgroundColor = "#b5e7a0"
          } else {
           this.text = "Puerta Cerrada"
-          this.myStyles.backgroundColor = "#eca1a6"
          }
         }
       },
@@ -37,7 +32,7 @@
         }
       },
       template: `
-      <div class="container" :style="myStyles">
+      <div class="container" :class="['open']">
         <h2>{{ text }}</h2>
         <button @click="isOpen = !isOpen">{{ label }}</button>
       </div>
@@ -66,11 +61,11 @@
       padding: 8px 24px;
       border-radius: 12px;
   }
-  /* .closed {
+  .closed {
       background-color: #eca1a6;
   }
   .open {
-      background-color: #b5e7a0; */
+      background-color: #b5e7a0;
   }
 </style>
   
