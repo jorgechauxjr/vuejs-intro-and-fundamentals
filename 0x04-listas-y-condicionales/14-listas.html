@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script src="https://unpkg.com/vue@next"></script>
+  <div id="app">{{ text }}</div>
+  <script>
+    const vm = Vue.createApp({
+      data() {
+        return {
+          text: "Accede a tu cuenta",
+          isOpen: false,
+          username: "",
+          posts: [{
+            title: "Titulo 1",
+            description: "Descripcion 1"
+          },
+          {
+            title: "Titulo 2",
+            description: "Desc2 Lorem uipsum..."
+          },
+          {
+            title: "Titulo 3",
+            description: "Desc3 Lorem uipsum..."
+          },
+          {
+            title: "Titulo 4",
+            description: "Desc4 Lorem uipsum..."
+          },
+          {
+            title: "Titulo 5",
+            description: "Desc5 Lorem uipsum..."
+          }]
+        }
+      },
+      watch: {
+        isOpen(value) {
+         if (value) {
+           this.text = "Cierra Sesión";
+         } else {
+          this.text = "Accede a tu cuenta";
+          this.username = "";
+         }
+        }
+      },
+      computed: {
+        // label() {
+        //   return this.isOpen ? "Cierra sesion" : "Acceder"
+        // },
+        myStyles() {
+          return this.isOpen ? ['openStyle'] : ['closedStyle']
+        }
+      },
+      template: `
+      <div class="container" :class="myStyles">
+        <h2>{{ text }}</h2>
+        <div v-if="isOpen">
+          <p>Hola, {{ username }}</p>
+          <div class="list">
+            <div v-for="i in posts" class="item">
+              <div class="title">{{ i.title }}</div>
+              <p>{{ i.description }}</p>
+            </div>
+          </div>
+        </div>
+        <div v-else>
+          <div>Username</div>
+          <input type="text" v-model="username" />
+        </div>
+        <button @click="isOpen = !isOpen">
+          <div v-if="!isOpen">Acceder</div>
+          <div v-else>Salir</div>  
+        </button>
+      </div>
+      `
+    }).mount("#app");
+  </script>
+
+<style>
+  html, body {
+      height: 100vh;
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+  }
+  #app, .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      width: 100%;
+      height: 100%;
+  }
+  button {
+      margin-top: 24px;
+      border: none;
+      background-color: white;
+      padding: 8px 24px;
+      border-radius: 12px;
+  }
+  .closedStyle {
+      background-color: #eca1a6;
+  }
+  .openStyle {
+      background-color: #b5e7a0;
+  }
+  .list {
+    display: flex;
+    flex-direction: column;
+  }
+  .item {
+    border: 1px solid black;
+  }
+  .title {
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
+</style>
+  
+</body>
+</html>
