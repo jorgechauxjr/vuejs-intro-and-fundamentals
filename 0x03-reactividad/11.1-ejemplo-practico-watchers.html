@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script src="https://unpkg.com/vue@next"></script>
+  <div id="app">{{ text }}</div>
+  <script>
+    const vm = Vue.createApp({
+      data() {
+        return {
+          text: "Puerta Cerrada",
+          isOpen: false
+        }
+      },
+      watch: {
+        isOpen(value) {
+         if (value) {
+           this.text = "Puerta ABIERTA"
+         } else {
+          this.text = "Puerta Cerrada"
+         }
+        }
+      },
+      computed: {
+        label() {
+          return this.isOpen ? "Cerrar" : "Abrir"
+        }
+      },
+      template: `
+      <div>{{ text }}</div>
+        <button @click="isOpen = !isOpen">{{ label }}</button>
+      `
+    }).mount("#app");
+  </script>
+  
+</body>
+</html>
