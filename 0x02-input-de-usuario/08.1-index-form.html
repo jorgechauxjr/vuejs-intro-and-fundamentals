@@ -17,6 +17,7 @@
     const vm = Vue.createApp({
       data() {
         return {
+          evt: "submit",
           counter: 0
         };
       },
@@ -27,7 +28,8 @@
           this.counter++;
         }
       },
-      template: `<form v-on:submit.prevent.stop="mysubmit"><button>{{ counter }}</button></form>`
+      template: `<form v-on:[evt].prevent="mysubmit"><button>{{ counter }}</button></form>`
+      // template: `<form v-on:submit.prevent.stop="mysubmit"><button>{{ counter }}</button></form>`
     }).mount("#app");
     console.log(vm)
   </script>
