@@ -29,10 +29,13 @@
       computed: {
         label() {
           return this.isOpen ? "Cerrar" : "Abrir"
+        },
+        myStyles() {
+          return this.isOpen ? ['openStyle'] : ['closedStyle']
         }
       },
       template: `
-      <div class="container" :class="['open']">
+      <div class="container" :class="myStyles">
         <h2>{{ text }}</h2>
         <button @click="isOpen = !isOpen">{{ label }}</button>
       </div>
@@ -61,10 +64,10 @@
       padding: 8px 24px;
       border-radius: 12px;
   }
-  .closed {
+  .closedStyle {
       background-color: #eca1a6;
   }
-  .open {
+  .openStyle {
       background-color: #b5e7a0;
   }
 </style>
