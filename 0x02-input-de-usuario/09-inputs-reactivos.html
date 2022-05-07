@@ -17,15 +17,24 @@
         }
       },
       methods: {
-        input(e) {
+        whenUserInput(e) {
           // console.log(e.target.value)
           this.text = e.target.value
         }
       },
+      // si quito el v-bind aunque el input esté vacío va aparecer el texto que hay en la variable text por defecto L16
+      // si dejo el v-bind no va a aparecer
       template: `
         <p>{{ text }}</p>
-        <input type="text" v-on:input="input" />
+        <input
+          type="text"
+          @input="whenUserInput"
+          :value="text"
+          />
       `
+      // value s un atributo
+      // @input es abreviacion de evento v-on:input
+      // :value es abreviacion de atributo v-bind:value
     }).mount("#app");
     console.log(vm)
   </script>
