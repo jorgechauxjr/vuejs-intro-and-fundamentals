@@ -18,7 +18,7 @@
       },
       watch: {
         text(value, previousValue) {
-          console.log("Watcher!", value, previousValue);
+          console.log("Watcher!", value, previousValue, this.text);
         }
       },
     }).mount("#app");
